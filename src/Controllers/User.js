@@ -1,0 +1,87 @@
+import argon2 from 'argon2';
+import userModel from '../Models/userModel.js';
+
+const users = userModel;
+
+export const Register = async (req, res) => {
+	try {
+		const { username, email, password } = req.body;
+
+		if (!(username || email || password)) return res.status(400).json('Incomplete details');
+
+		const userExist = await Promise.all([
+			users.findOne({ email }),
+			users.findOne({ username }),
+		]);
+
+		if (userExist[0] || userExist[1]) return res.status(404).json('Either username or email isn\'t available');
+		const hash = await argon2.hash(password);
+
+		const obj = {
+			username, email, password: hash, entries: 0, images: [], createdOn: Date.now(),
+		};
+
+		const user = (await new users(obj)).save();
+		delete user._doc.password;
+		delete user._doc.images;
+		user._doc.id = user._doc._id;
+		delete user._doc._id;
+
+		return res.status(200).json({
+			...user._doc,
+		});
+	}
+	catch (error) {
+		console.log(error);
+		res.status(400).json('Something went wrong.');
+	}
+};
+
+export const SignIn = async (req, res) => {
+	const { email, password } = req.body;
+
+	try {
+		const user = await Promise.all([
+			users.findOne({ email }),
+			users.findOne({ username: email }),
+		]);
+
+		if (!(user[0] || user[1])) return res.status(400).json('Either username, email or password is incorrect.');
+
+		const userData = user[0]?._doc || user[1]?._doc;
+
+		const passVerified = await argon2.verify(userData.password, password);
+
+		if (!passVerified) return res.status(400).json('Either username, email or password is incorrect.');
+
+		userData.id = userData._id;
+		delete userData._id;
+		delete userData.password;
+		delete userData.images;
+		res.status(200).json({
+			...userData,
+		});
+	}
+	catch (error) {
+		return res.status(400).json('Something went wrong');
+	}
+};
+
+
+export const UpdateUser = async (_req, res) => {
+	res.status(0).json('Under construction');
+};
+
+export const DeleteUser = async (req, res) => {
+	const { userid } = req.body;
+
+	if (!userid) return res.status(400).json({ message: 'userid is required' });
+
+	const user = await users.findOne({ _id: userid });
+
+	if (!user) return res.status(400).json({ message: 'user not found' });
+
+	await user.remove();
+
+	return res.status(200).json({ message: 'Successfully deleted the user' });
+};

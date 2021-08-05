@@ -1,9 +1,9 @@
 import Clarifai from 'clarifai';
-import dotenv from 'dotenv';
-dotenv.config();
+import { Router } from 'express';
 
+const ClarifaiRouter = Router();
 
-const clarifaiImage = async (req, res) => {
+ClarifaiRouter.get('/', async (req, res) => {
 	try {
 		const { imageUrl } = req.body;
 		if (!imageUrl) return res.status(400).json('Didn\'t provide any image.');
@@ -19,6 +19,6 @@ const clarifaiImage = async (req, res) => {
 		return res.status(400).json('something went wrong, try again.');
 
 	}
-};
+});
 
-export default clarifaiImage;
+export default ClarifaiRouter;

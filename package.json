@@ -1,0 +1,32 @@
+{
+  "name": "image-recognition-server",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/collection": "^0.1.6",
+    "argon2": "^0.27.1",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.19.0",
+    "clarifai": "^2.9.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.18",
+    "nodemon": "^2.0.7",
+    "npm": "^6.14.11",
+    "util": "^0.12.3"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}

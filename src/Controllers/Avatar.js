@@ -1,4 +1,4 @@
-import userModel from '../Models/userModel';
+import userModel from '../Models/userModel.js';
 
 export const GetAvatar = async (images, req, res) => {
 	try {

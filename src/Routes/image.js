@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import userModel from '../Models/userModel';
+import userModel from '../Models/userModel.js';
 
 const users = userModel;
 const StoreImageRouter = Router();

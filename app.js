@@ -6,9 +6,10 @@ import mongoose from 'mongoose';
 import fs from 'fs';
 
 import UserRouter from './src/Routes/user.js';
-// import ImagesRouter from './src/Routes/images.js';
-// import PostRouter from './src/Routes/posts.js';
+import ImageRouter from './src/Routes/image.js';
 import VerifyRouter from './src/Routes/verify.js';
+import ClarifaiRouter from './src/Routes/fetchImage.js';
+import AvatarRouter from './src/Routes/Avatar.js';
 
 dotenv.config();
 const app = express();
@@ -25,8 +26,9 @@ app.get('/', (_req, res) => {
 
 app.use('/user', UserRouter);
 app.use('/verify', VerifyRouter);
-// app.use('/posts', PostRouter);
-// app.use('/images', ImagesRouter);
+app.use('/image', ImageRouter);
+app.use('/fetchimage', ClarifaiRouter);
+app.use('/avatar', AvatarRouter);
 
 mongoose.connect(process.env.URI, {
 	useNewUrlParser: true,

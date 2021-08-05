@@ -2,7 +2,7 @@ import userModel from '../Models/userModel';
 
 export const GetAvatar = async (images, req, res) => {
 	try {
-		const file = await images.storage.files.findOne({ filename: req.params.userid });
+		const file = await images.storage.files.findOne({ filename: req.params.filename });
 		const readStream = images.storage.createReadStream(file.filename);
 		readStream.pipe(res);
 	}

@@ -58,6 +58,6 @@ AvatarRouter.post('/', Storage.single('avatar'), StoreAvatar);
 
 // Static / Stream images
 
-AvatarRouter.get('/:userid', GetAvatar.bind(null, images));
+AvatarRouter.get('/:filename', GetAvatar.bind(null, images));
 
 export default AvatarRouter;

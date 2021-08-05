@@ -1,3 +1,5 @@
+import userModel from '../Models/userModel';
+
 export const GetAvatar = async (images, req, res) => {
 	try {
 		const file = await images.storage.files.findOne({ filename: req.params.userid });
@@ -10,6 +12,12 @@ export const GetAvatar = async (images, req, res) => {
 };
 
 export const StoreAvatar = (req, res) => {
+	const { userid } = req.body;
+	const avatar = `https://image-recognition-server.herokuapp.com/avatar/${req.file.filename}`;
+
+	const user = userModel.findOne({ _id: userid });
+	user.avatar = avatar;
+
 	if (!req.file) return res.status(402).json({ message: 'Incomplete details' });
-	res.status(200).json(`https://image-recognition-server.herokuapp.com/avatar/${req.file.filename}`);
+	res.status(200).json(avatar);
 };

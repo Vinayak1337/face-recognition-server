@@ -28,6 +28,10 @@ const userSchema = new Schema({
 		type: Array,
 		default: [],
 	},
+	avatar: {
+		type: String,
+		default: `https://robohash.org/${Math.floor(Math.round(Math.random() * 10))}?380x380`,
+	},
 }, { minimize: false });
 
 export default mongoose.model('users', userSchema);

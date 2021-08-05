@@ -43,9 +43,11 @@ const storage = new GridFsStorage({
 			console.log(error);
 		}
 
+		const filename = file.originalname.split('.').reverse()[0];
+
 		return {
 			bucketName: 'avatar',
-			filename: userid,
+			filename: `${userid}.${filename}`,
 		};
 	},
 });

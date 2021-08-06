@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend server of (Face recognition app)[https://face-recognition.netlify.app]",
   "type": "module",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"

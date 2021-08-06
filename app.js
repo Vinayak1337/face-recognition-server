@@ -5,9 +5,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-const UserRouter = require('./src/Routes/user.js');
+const UserRouter = require('./src/Routes/User.js');
 const ImageRouter = require('./src/Routes/image.js');
-const VerifyRouter = require('./src/Routes/verify.js');
+const VerifyRouter = require('./src/Routes/Verify.js');
 const ClarifaiRouter = require('./src/Routes/fetchImage.js');
 const AvatarRouter = require('./src/Routes/Avatar.js');
 

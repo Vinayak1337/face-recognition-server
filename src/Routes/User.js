@@ -11,4 +11,4 @@ UserRouter.put('/update', UpdateUser);
 
 UserRouter.delete('/delete', DeleteUser);
 
-module.export = UserRouter;
+module.exports = UserRouter;

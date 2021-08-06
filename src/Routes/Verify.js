@@ -18,4 +18,4 @@ VerifyRouter.get('/', async (req, res) => {
 	res.status(200).json('Username & Email are available');
 });
 
-module.export = VerifyRouter;
+module.exports = VerifyRouter;

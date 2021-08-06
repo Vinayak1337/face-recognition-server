@@ -21,4 +21,4 @@ ClarifaiRouter.get('/', async (req, res) => {
 	}
 });
 
-module.export = ClarifaiRouter;
+module.exports = ClarifaiRouter;

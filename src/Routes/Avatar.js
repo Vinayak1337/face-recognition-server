@@ -60,4 +60,4 @@ AvatarRouter.post('/', Storage.single('avatar'), StoreAvatar);
 
 AvatarRouter.get('/:filename', GetAvatar.bind(null, images));
 
-module.export = AvatarRouter;
+module.exports = AvatarRouter;

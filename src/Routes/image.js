@@ -21,4 +21,4 @@ StoreImageRouter.get('/', async (req, res) => {
 	return res.status(200).json('Success');
 });
 
-module.export = StoreImageRouter;
+module.exports = StoreImageRouter;

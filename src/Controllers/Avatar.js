@@ -1,6 +1,6 @@
-import userModel from '../Models/userModel.js';
+const userModel = require('../Models/userModel.js');
 
-export const GetAvatar = async (images, req, res) => {
+exports.GetAvatar = async (images, req, res) => {
 	try {
 		const file = await images.storage.files.findOne({ filename: req.params.filename });
 		const readStream = images.storage.createReadStream(file.filename);
@@ -11,7 +11,7 @@ export const GetAvatar = async (images, req, res) => {
 	}
 };
 
-export const StoreAvatar = (req, res) => {
+exports.StoreAvatar = (req, res) => {
 	const { userid } = req.body;
 	const avatar = `https://image-recognition-server.herokuapp.com/avatar/${req.file.filename}`;
 

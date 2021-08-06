@@ -1,9 +1,9 @@
-import argon2 from 'argon2';
-import userModel from '../Models/userModel.js';
+const argon2 = require('argon2');
+const userModel = require('../Models/userModel.js');
 
 const users = userModel;
 
-export const Register = async (req, res) => {
+exports.Register = async (req, res) => {
 	try {
 		const { username, email, password } = req.body;
 
@@ -37,7 +37,7 @@ export const Register = async (req, res) => {
 	}
 };
 
-export const SignIn = async (req, res) => {
+exports.SignIn = async (req, res) => {
 	const { email, password } = req.body;
 
 	try {
@@ -68,11 +68,11 @@ export const SignIn = async (req, res) => {
 };
 
 
-export const UpdateUser = async (_req, res) => {
+exports.UpdateUser = async (_req, res) => {
 	res.status(0).json('Under construction');
 };
 
-export const DeleteUser = async (req, res) => {
+exports.DeleteUser = async (req, res) => {
 	const { userid } = req.body;
 
 	if (!userid) return res.status(400).json({ message: 'userid is required' });

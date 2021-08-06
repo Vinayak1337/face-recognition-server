@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import userModel from '../Models/userModel.js';
+const { Router } = require('express');
+const userModel = require('../Models/userModel.js');
 
 const users = userModel;
 const VerifyRouter = Router();
@@ -18,4 +18,4 @@ VerifyRouter.get('/', async (req, res) => {
 	res.status(200).json('Username & Email are available');
 });
 
-export default VerifyRouter;
+module.export = VerifyRouter;

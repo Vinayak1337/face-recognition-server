@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import { DeleteUser, Register, SignIn, UpdateUser } from '../Controllers/user.js';
+const { Router } = require('express');
+const { DeleteUser, Register, SignIn, UpdateUser } = require('../Controllers/user.js');
 
 const UserRouter = Router();
 
@@ -11,4 +11,4 @@ UserRouter.put('/update', UpdateUser);
 
 UserRouter.delete('/delete', DeleteUser);
 
-export default UserRouter;
+module.export = UserRouter;

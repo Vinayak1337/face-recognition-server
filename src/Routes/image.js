@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import userModel from '../Models/userModel.js';
+const { Router } = require('express');
+const userModel = require('../Models/userModel.js');
 
 const users = userModel;
 const StoreImageRouter = Router();
@@ -21,4 +21,4 @@ StoreImageRouter.get('/', async (req, res) => {
 	return res.status(200).json('Success');
 });
 
-export default StoreImageRouter;
+module.export = StoreImageRouter;

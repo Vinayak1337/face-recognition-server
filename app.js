@@ -1,34 +1,34 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import fs from 'fs';
+const express = require('express');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const fs = require('fs');
 
-import UserRouter from './src/Routes/user.js';
-import ImageRouter from './src/Routes/image.js';
-import VerifyRouter from './src/Routes/verify.js';
-import ClarifaiRouter from './src/Routes/fetchImage.js';
-import AvatarRouter from './src/Routes/Avatar.js';
+const UserRouter = require('./src/Routes/user.js');
+const ImageRouter = require('./src/Routes/image.js');
+const VerifyRouter = require('./src/Routes/verify.js');
+const ClarifaiRouter = require('./src/Routes/fetchImage.js');
+const AvatarRouter = require('./src/Routes/Avatar.js');
 
 dotenv.config();
 const app = express();
 
-app.use(bodyParser.json());
 app.use(cors({
 	origin: ['http://192.168.43.31:3000', 'https://face-recognition.netlify.app'],
 }));
-
-app.get('/', (_req, res) => {
-	const html = fs.readFileSync('./dist/index.html', 'utf8');
-	res.send(html);
-});
+app.use(bodyParser.json());
 
 app.use('/user', UserRouter);
 app.use('/verify', VerifyRouter);
 app.use('/image', ImageRouter);
 app.use('/fetchimage', ClarifaiRouter);
 app.use('/avatar', AvatarRouter);
+
+app.get('/', (_req, res) => {
+	const html = fs.readFileSync('./dist/index.html', 'utf8');
+	res.send(html);
+});
 
 mongoose.connect(process.env.URI, {
 	useNewUrlParser: true,

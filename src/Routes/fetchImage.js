@@ -1,5 +1,5 @@
-import Clarifai from 'clarifai';
-import { Router } from 'express';
+const Clarifai = require('clarifai');
+const { Router } = require('express');
 
 const ClarifaiRouter = Router();
 
@@ -21,4 +21,4 @@ ClarifaiRouter.get('/', async (req, res) => {
 	}
 });
 
-export default ClarifaiRouter;
+module.export = ClarifaiRouter;

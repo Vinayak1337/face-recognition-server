@@ -5,7 +5,7 @@ const Grid = require('gridfs-stream');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-const { GetAvatar, StoreAvatar } = require('../Controllers/avatar.js');
+const { GetAvatar, StoreAvatar } = require('../Controllers/Avatar.js');
 const { Router } = express;
 const AvatarRouter = Router();
 dotenv.config();

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { DeleteUser, Register, SignIn, UpdateUser } = require('../Controllers/user.js');
+const { DeleteUser, Register, SignIn, UpdateUser } = require('../Controllers/User.js');
 
 const UserRouter = Router();
 

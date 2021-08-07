@@ -41,18 +41,15 @@ exports.SignIn = async (req, res) => {
 	const { email, password } = req.body;
 
 	try {
-		const user = await Promise.all([
-			users.findOne({ email }),
-			users.findOne({ username: email }),
-		]);
+		const user = await users.findOne({ email });
 
-		if (!(user[0] || user[1])) return res.status(400).json('Either username, email or password is incorrect.');
+		if (!user) return res.status(400).json('User was not found.');
 
-		const userData = user[0]?._doc || user[1]?._doc;
+		const userData = user._doc;
 
 		const passVerified = await argon2.verify(userData.password, password);
 
-		if (!passVerified) return res.status(400).json('Either username, email or password is incorrect.');
+		if (!passVerified) return res.status(400).json('Either email or password is incorrect.');
 
 		userData.id = userData._id;
 		delete userData._id;

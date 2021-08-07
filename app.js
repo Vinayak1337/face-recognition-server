@@ -13,9 +13,12 @@ const AvatarRouter = require('./src/Routes/Avatar.js');
 
 dotenv.config();
 const app = express();
-
+const origins = ['http://192.168.43.31:3000', 'https://face-recognition.netlify.app'];
 app.use(cors({
-	origin: ['http://192.168.43.31:3000', 'https://face-recognition.netlify.app'],
+	origin: (origin, cb) => {
+		if (origins.includes(origin)) return cb(null, true);
+		return cb(new Error('Not allowed to access'));
+	},
 }));
 app.use(bodyParser.json());
 

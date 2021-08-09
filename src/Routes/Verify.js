@@ -6,7 +6,7 @@ const VerifyRouter = Router();
 
 VerifyRouter.post('/', async (req, res) => {
 	const { username, email } = req.body;
-	if (!(username && email)) return res.status(202).json({ message: 'No body' });
+	if (!(username && email)) return res.status(204).json({ message: 'No body', updated: true, ...req.body });
 	if (username) {
 		const user = await users.findOne({ username });
 		if (user) return res.status(406).json({ message: 'Username is not available' });

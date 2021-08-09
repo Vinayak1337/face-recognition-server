@@ -4,7 +4,7 @@ const userModel = require('../Models/userModel.js');
 const users = userModel;
 const VerifyRouter = Router();
 
-VerifyRouter.get('/', async (req, res) => {
+VerifyRouter.post('/', async (req, res) => {
 	const { username, email } = req.body;
 	if (!(username && email)) return res.status(202).json({ message: 'No body' });
 	if (username) {

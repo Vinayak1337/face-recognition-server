@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "push": "git add . &&  git commit -m \"$MSG\" && git push"
+    "push": "git add . &&  git commit -m \"Updating files\" && git push"
   },
   "keywords": [],
   "author": "Vinayak",

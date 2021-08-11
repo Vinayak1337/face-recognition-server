@@ -7,14 +7,14 @@ exports.Register = async (req, res) => {
 	try {
 		const { username, email, password } = req.body;
 
-		if (!(username || email || password)) return res.status(400).json('Incomplete details');
+		if (!(username || email || password)) return res.status(206).json('Incomplete details');
 
 		const userExist = await Promise.all([
 			users.findOne({ email }),
 			users.findOne({ username }),
 		]);
 
-		if (userExist[0] || userExist[1]) return res.status(404).json('Either username or email isn\'t available');
+		if (userExist[0] || userExist[1]) return res.status(204).json('Either username or email isn\'t available');
 		const hash = await argon2.hash(password);
 
 		const obj = {

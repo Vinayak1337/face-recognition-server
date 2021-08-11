@@ -12,6 +12,7 @@ const ClarifaiRouter = require('./src/Routes/fetchImage.js');
 const AvatarRouter = require('./src/Routes/Avatar.js');
 
 dotenv.config();
+
 const app = express();
 const origins = ['http://192.168.43.31:3000', 'http://localhost:3000', 'https://face-recognition.netlify.app'];
 app.use(cors({

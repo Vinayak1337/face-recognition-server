@@ -21,14 +21,17 @@ exports.Register = async (req, res) => {
 			username, email, password: hash, entries: 0, images: [], createdOn: Date.now(),
 		};
 
-		const user = (await new users(obj)).save();
-		delete user._doc.password;
-		delete user._doc.images;
-		user._doc.id = user._doc._id;
-		delete user._doc._id;
+		(await new users(obj)).save((_, UserDoc) => {
+			const user = {
+				id: UserDoc._id,
+				username: UserDoc.username,
+				email: UserDoc.email,
+				entries: UserDoc.entries,
+				createdOn: UserDoc.createdOn,
+				avatar: UserDoc.avatar,
+			};
 
-		return res.status(200).json({
-			...user._doc,
+			res.status(200).json(user);
 		});
 	}
 	catch (error) {

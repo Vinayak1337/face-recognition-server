@@ -33,7 +33,7 @@ exports.Register = async (req, res) => {
 	}
 	catch (error) {
 		console.log(error);
-		res.status(400).json(`Something went wrong. ${error.message}`);
+		res.status(500).json(`Something went wrong. ${error.message}`);
 	}
 };
 

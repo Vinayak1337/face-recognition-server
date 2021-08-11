@@ -7,7 +7,7 @@ exports.Register = async (req, res) => {
 	try {
 		const { username, email, password } = req.body;
 
-		if (!(username || email || password)) return res.status(206).json('Incomplete details');
+		if (!username || !email || !password) return res.status(206).json('Incomplete details');
 
 		const userExist = await Promise.all([
 			users.findOne({ email }),

@@ -63,7 +63,7 @@ exports.SignIn = async (req, res) => {
 		});
 	}
 	catch (error) {
-		return res.status(500).json('Something went wrong');
+		return res.status(500).json(`Something went wrong ${error.message}`);
 	}
 };
 

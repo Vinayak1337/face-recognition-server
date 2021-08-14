@@ -16,8 +16,7 @@ ClarifaiRouter.post('/', async (req, res) => {
 	}
 	catch (error) {
 		console.log(error);
-		return res.status(500).json('something went wrong, try again.');
-
+		return res.status(500).json(`something went wrong, try again. ${error.message}`);
 	}
 });
 

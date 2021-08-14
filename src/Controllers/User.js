@@ -7,14 +7,14 @@ exports.Register = async (req, res) => {
 	try {
 		const { username, email, password } = req.body;
 
-		if (!username || !email || !password) return res.status(206).json('Incomplete details');
+		if (!username || !email || !password) return res.status(400).json('Incomplete details');
 
 		const userExist = await Promise.all([
 			users.findOne({ email }),
 			users.findOne({ username }),
 		]);
 
-		if (userExist[0] || userExist[1]) return res.status(204).json('Either username or email isn\'t available');
+		if (userExist[0] || userExist[1]) return res.status(406).json('Either username or email isn\'t available');
 		const hash = await argon2.hash(password);
 
 		const obj = {
@@ -46,7 +46,7 @@ exports.SignIn = async (req, res) => {
 	try {
 		const user = await users.findOne({ email });
 
-		if (!user) return res.status(400).json('User was not found.');
+		if (!user) return res.status(404).json('User was not found.');
 
 		const userData = user._doc;
 
@@ -63,13 +63,13 @@ exports.SignIn = async (req, res) => {
 		});
 	}
 	catch (error) {
-		return res.status(400).json('Something went wrong');
+		return res.status(500).json('Something went wrong');
 	}
 };
 
 
 exports.UpdateUser = async (_req, res) => {
-	res.status(0).json('Under construction');
+	res.status(501).json('Under construction');
 };
 
 exports.DeleteUser = async (req, res) => {
@@ -79,7 +79,7 @@ exports.DeleteUser = async (req, res) => {
 
 	const user = await users.findOne({ _id: userid });
 
-	if (!user) return res.status(400).json({ message: 'user not found' });
+	if (!user) return res.status(404).json({ message: 'user not found' });
 
 	await user.remove();
 

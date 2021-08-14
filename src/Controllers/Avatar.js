@@ -18,6 +18,6 @@ exports.StoreAvatar = (req, res) => {
 	const user = userModel.findOne({ _id: userid });
 	user.avatar = avatar;
 
-	if (!req.file) return res.status(402).json({ message: 'Incomplete details' });
+	if (!req.file) return res.status(400).json('Incomplete details');
 	res.status(200).json(avatar);
 };

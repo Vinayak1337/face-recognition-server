@@ -12,7 +12,7 @@ StoreImageRouter.get('/', async (req, res) => {
 
 	if (!user) return res.status(404).json('User not found');
 
-	if (user.images.includes(image)) return res.status(202).json('Image already exists');
+	if (user.images.includes(image)) return res.status(204).json('Image already exists');
 
 	user.images.push(image);
 	user.entries += 1;

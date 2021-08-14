@@ -4,7 +4,7 @@ const userModel = require('../Models/userModel.js');
 const users = userModel;
 const StoreImageRouter = Router();
 
-StoreImageRouter.get('/', async (req, res) => {
+StoreImageRouter.post('/', async (req, res) => {
 	const { id, image } = req.body;
 	if (!(id || image)) return res.status(400).json('Incorrect arguments');
 

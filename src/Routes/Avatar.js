@@ -26,28 +26,18 @@ const storage = new GridFsStorage({
 	options: {
 		useNewUrlParser: true, useUnifiedTopology: true,
 	},
-	file: async (req, file) => {
-		const match = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
-		const { userid } = req.body;
-
-		if (!userid) return file.originalname;
-		if (match.indexOf(file.mimetype) === -1) {
-			return file.originalname;
-		}
-
+	file: async (_req, file) => {
 		try {
-			const fileExist = await images.storage.files.findOne({ filename: userid });
-			if (fileExist) await images.storage.files.deleteOne({ filename: userid });
+			const fileExist = await images.storage.files.findOne({ filename: file.originalname });
+			if (fileExist) await images.storage.files.deleteOne({ filename: file.originalname });
 		}
 		catch (error) {
 			console.log(error);
 		}
 
-		const filename = file.originalname.split('.').reverse()[0];
-
 		return {
 			bucketName: 'avatar',
-			filename: `${userid}.${filename}`,
+			filename: `${file.originalname}.${file.mimetype.replace('image/', '')}`,
 		};
 	},
 });

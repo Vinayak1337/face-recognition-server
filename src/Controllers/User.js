@@ -68,8 +68,31 @@ exports.SignIn = async (req, res) => {
 };
 
 
-exports.UpdateUser = async (_req, res) => {
-	res.status(501).json('Under construction');
+exports.UpdateUser = async (req, res) => {
+	try {
+
+		const { userid, password, username, newpassword } = req.body;
+
+		if (!userid || !(newpassword && username) || (newpassword && !password)) return res.status(400).json('Incomplete details.');
+
+		const user = await users.findOne({ _id: userid });
+		if (!user) return res.status(404).json('User was not found.');
+
+		if (username) user.username = username;
+
+		const isPasswordValid = await argon2.verify(user.password, password);
+		if (!isPasswordValid) return res.status(401).json('Password was incorrect.');
+
+		const newHash = await argon2.hash(newpassword);
+		user.password = newHash;
+
+		await user.save();
+
+		res.status(200).json('Successfuly updated the user');
+	}
+	catch (error) {
+		return res.status(500).json(`Something went wrong ${error.message}`);
+	}
 };
 
 exports.DeleteUser = async (req, res) => {

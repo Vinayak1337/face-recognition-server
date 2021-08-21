@@ -73,7 +73,7 @@ exports.UpdateUser = async (req, res) => {
 
 		const { userid, password, username, newpassword } = req.body;
 
-		if (!userid || !(newpassword && username)) return res.status(400).json('Incomplete details. Did not find either username or password.');
+		if (!userid || (!newpassword && !username)) return res.status(400).json('Incomplete details. Did not find either username or password.');
 		if (newpassword && !password) return res.status(400).json('Incomplete details. Did not find current password.');
 
 		const user = await users.findOne({ _id: userid });

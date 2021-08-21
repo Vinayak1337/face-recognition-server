@@ -8,7 +8,7 @@ StoreImageRouter.post('/', async (req, res) => {
 	const { id, image } = req.body;
 	if (!(id || image)) return res.status(400).json('Incorrect arguments');
 
-	const user = await users.findOne({ id: id });
+	const user = await users.findOne({ _id: id });
 
 	if (!user) return res.status(404).json('User not found');
 

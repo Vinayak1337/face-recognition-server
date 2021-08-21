@@ -70,7 +70,6 @@ exports.SignIn = async (req, res) => {
 
 exports.UpdateUser = async (req, res) => {
 	try {
-
 		const { userid, password, username, newpassword } = req.body;
 
 		if (!userid || (!newpassword && !username)) return res.status(400).json('Incomplete details. Did not find either username or password.');
@@ -81,18 +80,20 @@ exports.UpdateUser = async (req, res) => {
 
 		if (username) user.username = username;
 
-		const isPasswordValid = await argon2.verify(user.password, password);
-		if (!isPasswordValid) return res.status(401).json('Password was incorrect.');
+		if (newpassword) {
+			const isPasswordValid = await argon2.verify(user.password, password);
+			if (!isPasswordValid) return res.status(401).json('Password was incorrect.');
 
-		const newHash = await argon2.hash(newpassword);
-		user.password = newHash;
+			const newHash = await argon2.hash(newpassword);
+			user.password = newHash;
+		}
 
 		await user.save();
 
 		res.status(200).json('Successfuly updated the user');
 	}
 	catch (error) {
-		return res.status(500).json(`Something went wrong ${error.message}`);
+		return res.status(500).json(`Something went wrong. ${error.message}`);
 	}
 };
 

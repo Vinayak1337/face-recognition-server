@@ -16,7 +16,8 @@ StoreImageRouter.post('/', async (req, res) => {
 
 	user.images.push(image);
 	user.entries += 1;
-	await user.save('images');
+	user.markModified('images');
+	await user.save();
 
 	return res.status(200).json('Success');
 });

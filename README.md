@@ -69,3 +69,6 @@ This repository contains the backend server for the [Face Recognition App](https
    npm start
    ```
 6. Update the frontend project's base URL to your server's address.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Vinayak1337/face-recognition-server/blob/master/LICENSE.md) file for details.

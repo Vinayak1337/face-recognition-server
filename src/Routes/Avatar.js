@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 const { GetAvatar, StoreAvatar } = require('../Controllers/Avatar.js');
+const SECRETS = require('../utils.js');
 const { Router } = express;
 const AvatarRouter = Router();
 dotenv.config();
@@ -22,7 +23,7 @@ conn.once('open', () => {
 });
 
 const storage = new GridFsStorage({
-	url: process.env.URI,
+	url: SECRETS.MONGO_URI,
 	options: {
 		useNewUrlParser: true, useUnifiedTopology: true,
 	},

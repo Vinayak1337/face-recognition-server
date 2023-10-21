@@ -2,7 +2,7 @@
 
 This is the backend server for the [Face Recognition App](https://face-recognition-ht5h.netlify.app). It's responsible for handling authentication, image storage, face detection, and user data management.
 
-🔗 **Server Status**: https://face-recognition-server-ht5h.onrender.com
+🔗 **Server Status**: Currently Live at https://face-recognition-server-ht5h.onrender.com
 
 ## Technologies & Packages
 - **Language**: JavaScript

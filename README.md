@@ -58,6 +58,7 @@ This repository contains the backend server for the [Face Recognition App](https
    ```
    MONGO_URI=YOUR_MONGODB_URI
    PORT=YOUR_PORT
+   #example: http://localhost:5000 for your local startup
    BASE_URL=YOUR_BASE_URL
    CLARIFAI_TOKEN=YOUR_CLARIFAI_TOKEN
    ```

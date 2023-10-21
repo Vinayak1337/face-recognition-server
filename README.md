@@ -1,8 +1,8 @@
 # Backend Server for Face Recognition App
 
-This is the backend server for the [Face Recognition App](https://face-recognition-webapp.netlify.app). It's responsible for handling authentication, image storage, face detection, and user data management.
+This is the backend server for the [Face Recognition App](https://face-recognition-ht5h.netlify.app). It's responsible for handling authentication, image storage, face detection, and user data management.
 
-🔗 **Server Status**: Currently offline (Free hosting period ended)
+🔗 **Server Status**: https://face-recognition-server-ht5h.onrender.com
 
 ## Technologies & Packages
 - **Language**: JavaScript
@@ -16,23 +16,23 @@ This is the backend server for the [Face Recognition App](https://face-recogniti
 ## API Endpoints
 
 ### User Authentication (`/user`)
-- **[POST /create](https://image-recognition-server.herokuapp.com/user/create)**: Register a new user.
-- **[POST /get](https://image-recognition-server.herokuapp.com/user/get)**: Authenticate an existing user.
-- **[PUT /update](https://image-recognition-server.herokuapp.com/user/update)**: Update user data.
-- **[DELETE /delete](https://image-recognition-server.herokuapp.com/user/delete)**: Remove a user.
+- **[POST /create](https://face-recognition-server-ht5h.onrender.com/user/create)**: Register a new user.
+- **[POST /get](https://face-recognition-server-ht5h.onrender.com/user/get)**: Authenticate an existing user.
+- **[PUT /update](https://face-recognition-server-ht5h.onrender.com/user/update)**: Update user data.
+- **[DELETE /delete](https://face-recognition-server-ht5h.onrender.com/user/delete)**: Remove a user.
 
 ### Verification
-- **[/verify POST](https://image-recognition-server.herokuapp.com/verify/)**: Check if a username or email already exists in the database before registering a new user.
+- **[/verify POST](https://face-recognition-server-ht5h.onrender.com/verify/)**: Check if a username or email already exists in the database before registering a new user.
 
 ### Face Detection
-- **[/fetchimage POST](https://image-recognition-server.herokuapp.com/fetchimage/)**: Detect faces in an image and return the data to the frontend.
+- **[/fetchimage POST](https://face-recognition-server-ht5h.onrender.com/fetchimage/)**: Detect faces in an image and return the data to the frontend.
 
 ### Image Handling
-- **[/image POST](https://image-recognition-server.herokuapp.com/image/)**: Store face image URLs and increment the user's entry count.
+- **[/image POST](https://face-recognition-server-ht5h.onrender.com/image/)**: Store face image URLs and increment the user's entry count.
 
 ### Avatar Management (`/avatar`)
-- **[POST /](https://image-recognition-server.herokuapp.com/images/)**: Upload an image.
-- **[GET /](https://image-recognition-server.herokuapp.com/images/)**: Stream an image by URL. [Example Image](https://image-recognition-server.herokuapp.com/avatar/6054d4365446742d3c310d031629882082615.jpeg)
+- **[POST /](https://face-recognition-server-ht5h.onrender.com/images/)**: Upload an image.
+- **[GET /](https://face-recognition-server-ht5h.onrender.com/images/)**: Stream an image by URL.
 
 ## Setup and Installation
 1. Clone the repository: `git clone [repo-link]`

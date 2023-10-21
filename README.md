@@ -43,28 +43,28 @@ This repository contains the backend server for the [Face Recognition App](https
 ## 📦 Setup and Installation
 
 1. Clone the repository: 
-   \```bash
+   ```bash
    git clone https://github.com/Vinayak1337/face-recognition-server.git
-   \```
+   ```
 2. Navigate to the project directory: 
-   \```bash
+   ```bash
    cd face-recognition-server
-   \```
+   ```
 3. Install dependencies: 
-   \```bash
+   ```bash
    npm install
-   \```
+   ```
 4. Create a `.env` file in the root directory and add the following values:
-   \```
+   ```
    MONGO_URI=YOUR_MONGODB_URI
    PORT=YOUR_PORT
    BASE_URL=YOUR_BASE_URL
    CLARIFAI_TOKEN=YOUR_CLARIFAI_TOKEN
-   \```
+   ```
    **Important**: Replace `YOUR_MONGODB_URI`, `YOUR_PORT`, `YOUR_BASE_URL`, and `YOUR_CLARIFAI_TOKEN` with your actual credentials and settings. Never share or expose your `.env` file or its contents.
 
 5. Start the server: 
-   \```bash
+   ```bash
    npm start
-   \```
+   ```
 6. Update the frontend project's base URL to your server's address.
